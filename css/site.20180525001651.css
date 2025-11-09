@@ -1,0 +1,405 @@
+/* Menu-optimized (v2) – deduplicated */
+
+/* --- Normalize / Base --- */
+body{margin:0;font-size:0}
+section{display:block}
+video{display:inline-block;vertical-align:baseline}
+a{background:0 0;text-decoration:inherit;color:inherit;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+h1,h2,h3,h4,h5,h6{margin:0;word-spacing:normal}
+img{border:0}
+p{margin:0;word-spacing:normal}
+div{font-size:0}
+form{display:inline-block}
+button,input,textarea{color:inherit;font:inherit;margin:0}
+button{overflow:visible;text-transform:none}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input{line-height:normal;box-sizing:border-box}
+input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}
+input[type=text]{border:solid thin #ddd}
+input[type=search]{-webkit-appearance:textfield;box-sizing:content-box}
+textarea{overflow:auto;border-color:#ddd;box-sizing:border-box}
+table{border-collapse:collapse;border-spacing:0}
+td,th{padding:0}
+#body{background-color:#fff}
+
+/* --- Reusable patterns / dedupe --- */
+
+/* Alle „block-*“ teilen 95% der Regeln */
+.block-1,.block-2,.block-3,.block-4,.banner-rosso, .banner-arancio  {
+  display:inline-block;vertical-align:top;width:100%;
+  min-width:960px;position:relative;margin-top:0;border:0;
+  background-repeat:no-repeat;background-position:50% 50%;
+  background-size:cover;background-clip:padding-box;
+}
+
+.banner-arancio{
+border-top: 1px solid white;
+}
+	
+.block-1{min-height:811px;z-index:1}
+.block-2,.block-3{min-height:947px;z-index:5}
+.block-4{min-height:862px;z-index:8}
+
+.block-6 {
+  display: flex;
+  flex-direction: row;       /* Nebeneinander */
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  /* min-width:760px; */
+  min-height: 891px;
+  z-index: 14;
+  margin-top: -10px;
+  background: none;          /* wenn du kein zentrales Hintergrundbild willst */
+}
+
+.biographie-rechts {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  background-clip: padding-box;
+}
+
+
+
+/* Linke Seite breiter, rechte schmaler */
+.biographie-links {
+  position: relative;           /* damit .biographie-text sich daran ausrichtet */
+  flex: 2;
+  min-height: 862px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: cover;
+  background-clip: padding-box;
+  margin-left: -20px;
+}
+
+.biographie-rechts {
+  flex: 1;
+  min-height: 862px;
+}
+
+.biographie-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;                    /* mittig zentrieren ist meist 50/50 sinnvoller */
+  transform: translate(-50%, -50%);
+  z-index: 2;                   /* sicher über dem Hintergrund */
+  width: min(80%, 800px);
+  text-align: center;
+  /* font-family: "Knewave", system-ui; */
+  font-family: "Chewy", system-ui;
+  
+  font-size: 24px;
+  line-height: 1.6;
+  /* background: rgba(0, 0, 0, 0.4); */
+  padding: 20px 30px;
+  border-radius: 10px;
+}
+
+
+
+.tour {
+  text-align: center;
+  color: black;
+  font-size: 90px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Carter One", system-ui;
+  margin-bottom: 20px;
+  transform: rotate(-1deg);
+}
+
+
+/* Carousel */
+/* Carousel */
+.carousel-multi {
+  position: relative;
+  width: calc(3 * 350px + 2 * 40px); /* exakt 3 Bilder + 2 Abstände */
+  margin: 80px auto;
+  overflow: visible; /* Pfeile sichtbar lassen */
+}
+
+.carousel-multi.second {
+  margin-top: 50px; /* Abstand zum ersten Carousel */
+}
+
+
+.carousel-track {
+  display: flex;
+  gap: 40px;
+  justify-content: flex-start;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+
+.carousel-track img {
+  flex: 0 0 350px;
+  width: 350px;
+  height: 350px;
+  border-radius: 25px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+}
+
+/* .carousel-track img:hover { */
+  /* transform: scale(1.1); */
+  /* filter: brightness(1.2) contrast(1.05); */
+  /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); */
+/* } */
+
+.carousel-track img:hover {
+  transform: rotate(-2deg) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Navigation Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.7);
+  border: none;
+  color: white;
+  font-size: 2.4rem;
+  padding: 16px 22px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Pfeile etwas weiter außen */
+.carousel-btn.prev {
+  left: -100px;  /* sichtbar links vom ersten Bild */
+}
+.carousel-btn.next {
+  right: -100px; /* sichtbar rechts vom letzten Bild */
+}
+
+.carousel-btn:hover {
+  background: #54ffb8;
+  color: black;
+  /* transform: scale(1.12); */
+}
+
+
+
+
+
+/* Container der Tour-Streifen */
+.tour-container {
+  display: flex;
+  justify-content: center;   /* horizontal zentrieren */
+  align-items: center;       /* vertikal ausrichten */
+  flex-wrap: wrap;           /* bei Platzmangel umbrechen */
+  gap: 20px;                 /* Abstand zwischen den DIVs */
+  text-align: center;
+}
+
+/* Einzelne Streifen */
+.tour_streife {
+  background-color: black;
+  color: white;
+  font-size: 25px;
+  padding: 10px 25px;
+  margin: 10px;
+  font-family: "Carter One", system-ui;
+  /* border-radius: 2px; */
+  box-shadow: 9px 9px 0 #54ffb8; /* gleichmäßiger Glow */
+  /* transform: rotate(-1deg); */
+}
+
+
+.tour_streife_mitte {
+  /* background-color: white; */
+  color: black;
+  font-size: 25px;
+  padding: 10px 25px;
+  margin: 30px;
+  font-family: "Carter One", system-ui;
+  border-radius: 2px;
+  /* box-shadow: 9px 9px 0 #54ffb8; /* gleichmäßiger Glow */ */
+  /* transform: rotate(-1deg); */
+}
+
+.block-7 {
+	
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 280px;
+}
+
+.block-8 {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 150px;
+}
+
+.logo {
+  position: relative;
+  top: 20px;                 /* Abstand vom oberen Rand */
+  left: 50%;                 /* horizontal zentrieren */
+  transform: translateX(-50%);
+  width: 150px;              /* Breite des Logos */
+  height: 150px;             /* Höhe des Logos */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;  /* Logo vollständig sichtbar */
+}
+
+.email {
+  font-family: "Kanit", sans-serif;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 40px;                 /* Abstand vom oberen Rand */
+  left: 50%;                 /* horizontal zentrieren */
+  transform: translateX(-50%);
+  width: 310px;  
+  height: 50px; 
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  /* line-height: 1.6; */
+  background: rgba(0, 0, 0, 0.55); /* overlay scuro dietro al testo */
+  /* padding: 0px 30px; */
+  border-radius: 10px;
+  border: 3px solid white;  
+}
+
+
+.text_1 {
+  font-family: "Kanit", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 55px;                 /* Abstand vom oberen Rand */
+  left: 50%;                 /* horizontal zentrieren */
+  transform: translateX(-50%);
+  color: white;
+  font-size: 15px;
+  width: 120px;  
+  height: 20px;
+}
+
+/* Sticky / Navbar */
+.cont-6{
+  color:#fff;width:100%;min-width:960px;min-height:71px;z-index:33;
+  margin-top:-478px;display:block;top:0;position:sticky;
+}
+.cont-7{
+  display:inline-block;vertical-align:top;width:100%;min-width:960px;min-height:71px;
+  position:relative;z-index:34;margin-top:0;border:0;background-color:rgba(255,255,255,.479);
+}
+.cont-8{display:inline-block;vertical-align:top;min-height:73px;position:relative;margin:0;width:99%;}
+
+/* Sections */
+.section,.section-2,.section-4,.section-11{
+  position:relative;min-width:960px;width:960px;margin-left:auto;margin-right:auto;display:block;
+}
+.section{margin-top:0}
+.section-2{margin-top:101px}
+.section-4{margin-top:229px}
+.section-11{margin-top:33px;margin-left:150px;margin-right:auto}
+
+/* „fixed-*“ Polyfill zusammenfassen */
+.fixed,.fixed-2,.fixed-3,.fixed-5,.fixed-6,.fixed-7,.fixed-8,.fixed-9,.fixed-10{background-attachment:fixed}
+html.nofixed .fixed,
+html.nofixed .fixed-2,
+html.nofixed .fixed-3,
+html.nofixed .fixed-5,
+html.nofixed .fixed-6,
+html.nofixed .fixed-7,
+html.nofixed .fixed-8,
+html.nofixed .fixed-9,
+html.nofixed .fixed-10{background-attachment:scroll}
+
+/* Kleine Container (gleiches Muster) */
+.cont-2,.cont-29,.cont-44,.cont-73{
+  display:inline-block;vertical-align:top;min-width:20px;width:20px;min-height:20px;position:relative;margin:0
+}
+.cont-2{z-index:2}
+.cont-29{z-index:6}
+.cont-44{z-index:9}
+.cont-73{z-index:27}
+
+/* Große Content-Container mit Bild */
+.cont-3,.cont-74{
+  display:inline-block;vertical-align:top;width:100%;min-width:960px;position:relative;border:0;
+  background-repeat:no-repeat;background-position:50% 50%;background-size:cover;background-clip:padding-box;
+}
+.cont-3{min-height:405px;z-index:3;margin-top:318px}
+/* .cont-30-bis{min-height:666px;z-index:7;margin-top:261px} */
+/* .cont-50{min-height:460px;z-index:13;margin-top:376px} */
+.cont-74{min-height:585px;z-index:28;margin-top:276px}
+
+/* Video-Block */
+.block-video.fixed-7{position:relative;width:100%;height:100vh;overflow:hidden}
+.block-video.fixed-7 video{width:100%;height:100%;object-fit:cover}
+.cont-video{
+  display:inline-block;vertical-align:top;width:100%;min-width:960px;min-height:424px;
+  position:relative;z-index:15;margin-top:-424px;border:0;background:transparent no-repeat 50% 50%;
+  background-size:cover;background-clip:padding-box;
+}
+.cont-video.fixed-8{display:flex;justify-content:space-between;align-items:center;width:100%;position:relative}
+
+/* Texte / Typografie */
+.para,.para-2,.para-3,.para-10{padding-top:0;text-indent:0;margin-top:0;margin-bottom:0;text-align:center}
+
+/* Große Headline (gemeinsame Werte) */
+.font,.font-2{
+  font-family:Lato;font-size:57pt;font-style:normal;text-decoration:none;color:#fff;line-height:68.4pt;letter-spacing:normal
+}
+.font{font-weight:700}
+.font-2{font-weight:100}
+
+/* Mittelgroß (identische Varianten zusammengefasst) */
+.font-3,.font-5{
+  font-family:Lato;font-size:27pt;font-weight:100;font-style:normal;text-decoration:none;color:#fff;line-height:32.4pt;letter-spacing:normal
+}
+.font-4{
+  font-family:Lato;font-size:27pt;font-weight:700;font-style:normal;text-decoration:none;color:#fff;line-height:32.4pt;letter-spacing:normal
+}
+
+/* Kleine Navbar-Schrift (alle identisch) */
+.font-6,.font-7,.font-10,.font-11{
+  font-family:Lato;font-size:15pt;font-weight:300;font-style:normal;text-decoration:none;color:#000;line-height:19.8pt;letter-spacing:1px
+}
+
+/* Spezialschriftzug */
+.font-12{
+  font-family:"Arial Unicode MS",sans-serif;font-size:37.5pt;font-weight:400;font-style:normal;text-decoration:none;color:#fff;line-height:50.24pt;letter-spacing:30px
+}
+
+/* Menü (alle Varianten deduplizieren) */
+.menulink,.menulink-2,.menulink-3,.menulink-4,.menulink-5{outline:0}
+.menu-item,.menu-item-2,.menu-item-4,.menu-item-5{
+  display:inline-block;vertical-align:top;min-height:71px;height:71px;position:relative;margin:0;visibility:visible
+}
+.menu-item{min-width:262px;width:262px}
+.menu-item-2{min-width:167px;width:167px}
+.menu-item-4{min-width:196px;width:196px}
+.menu-item-5{min-width:152px;width:152px}
+
+/* zentrale Menü-Hilfen (deine zusätzlichen Utilities) */
+.menu-btn{display:flex;align-items:center;justify-content:center;width:262px;height:71px;text-decoration:none;outline:0;background:transparent}
+.menu-label{text-align:center}
+/* Navbar: Text zuverlässig weiß */
+.col-2 a,.col-2 .menu-label,.col-2 [class^="font-"]{color:#fff!important}
+/* Hover/Focus neutralisieren */
+.menu-btn:hover,.menu-btn:focus{text-decoration:none;outline:0}

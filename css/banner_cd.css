@@ -1,0 +1,56 @@
+
+/* Banner-Row bündig auf 100% Breite */
+.row.striscia {
+  --bs-gutter-x: 0;      /* Bootstrap-Gutter deaktivieren */
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Spalten im Banner ohne Innenabstand */
+.row.striscia > [class^="col-"] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.striscia {
+  overflow: hidden;
+}
+
+/* Banner: echtes Zentrieren + sichtbare Schrift */
+.banner {
+  height: 75px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; /* horizontal */
+  align-items: center;         /* vertikal */
+  overflow: hidden;
+}
+
+.banner .marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);              /* glatter */
+  animation: marquee-ltr 24s linear infinite;
+}
+
+.banner-arancio .marquee {
+  animation-duration: 28s; /* statt 24s → langsamer */
+}
+
+.banner .marquee span {
+  font-family: "Rubik Distressed", system-ui;
+  color: #fff;
+  font-size: 24px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@keyframes marquee-ltr {
+  from { transform: translateX(-50%); }  /* Start = Anfang des 2. A (identisch) */
+  to   { transform: translateX(0); }     /* Ende = Anfang des 1. A */
+}
+
+
+

@@ -4,20 +4,10 @@
   grid-template-columns: repeat(2,1fr);
   gap:30px;
   max-width:1300px;
-  margin:40px auto;
+  margin: 60px auto 80px auto; /* oben, rechts, unten, links */
+  /* margin:40px auto;  */
+  /* oben/unten, links/rechts */
 }
-
-/* .spotify-card{ */
-  /* position:relative; */
-  /* padding:16px;  */
-  /* border-radius:22px;  */
-  /* background: rgba(18,18,18,0.2);  */
-  /* backdrop-filter: blur(6px);    */
-  /* -webkit-backdrop-filter: blur(6px); */
-  /* box-shadow: 0 10px 30px rgba(0,0,0,.35); */
-  /* color:#fff; */
-  /* font-size:16px; */
-/* } */
 
 
 .spotify-card {

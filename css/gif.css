@@ -119,21 +119,33 @@
 }
 
 /* VIDEO BLEIBT FULLSCREEN */
+/* .block-video { */
+  /* position: relative; */
+  /* width: 100%; */
+  /* height: 100vh; */
+  /* overflow: hidden; */
+/* } */
+
+/* Video selbst bleibt fullscreen */
+/* .block-video video { */
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 50%; */
+  /* height: 100%; */
+  /* width: 100%; */
+  /* transform: translateX(-50%); */
+  /* object-fit: cover; */
+/* } */
+
 .block-video {
   position: relative;
   width: 100%;
-  height: 100vh;
+  aspect-ratio: 16 / 9;   /* block wird kleiner bei kleinerem Viewport */
   overflow: hidden;
 }
 
-/* Video selbst bleibt fullscreen */
 .block-video video {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  height: 100%;
-  /* width: auto; */
   width: 100%;
-  transform: translateX(-50%);
+  height: 100%;
   object-fit: cover;
 }

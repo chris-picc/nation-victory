@@ -1,0 +1,143 @@
+/* ==========================
+   ALBUM-CARD STRUKTUR
+   ========================== */
+
+/* Äußerer Container (größer als das Bild) */
+.album-card {
+	box-sizing: border-box;
+	
+  flex: 0 0 350px; 
+  width: 350px;
+  height: 350px;
+  padding: 14px; 
+  /* border-radius: 28px; */
+  /* background: rgba(255,255,255,0.08);  */
+  /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35); */
+  display: flex;
+  justify-content: center;   /* Bild zentrieren */
+  align-items: center;       /* Bild zentrieren */
+  position: relative;
+  overflow: visible;            /* Container darf überragen */
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+  scroll-snap-align: start;
+}
+
+/* Inneres Bild */
+.album-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+  transition: filter 0.4s ease, opacity 0.4s ease;
+  box-shadow: 10px 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover nur auf Container */
+.album-card:hover {
+  transform: translateY(-6px) rotate(-2deg);
+  /* background: rgba(255,255,255,0.15); */
+  /* box-shadow: 0 16px 45px rgba(0,0,0,0.6); */
+}
+
+/* Bild bleibt gleich groß, nur leicht heller */
+.album-card:hover img {
+  filter: brightness(1.1);
+  opacity: 0.96;
+  box-shadow: 10px 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ==========================
+   CAROUSEL-GRUNDSTRUKTUR
+   ========================== */
+
+.carousel-track {
+  display: flex;
+  gap: 25px;
+  justify-content: flex-start;
+  padding: 15px 0;
+  /* overflow-x: auto; */
+  
+  overflow: hidden;
+  
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+
+/* Alte Bild-Regeln überschreiben, da Bilder jetzt im Container sind */
+.carousel-track img {
+  flex: none !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 18px !important;
+  object-fit: cover;
+  cursor: pointer;
+  transition: none;
+}
+
+/* ==========================
+   NAVIGATIONSBUTTONS
+   ========================== */
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.7);
+  border: none;
+  color: white;
+  font-size: 2.4rem;
+  padding: 16px 22px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Buttons nah an den Rand des Carousels setzen */
+/* .carousel-btn.prev { left: 10px; } */
+/* .carousel-btn.next { right: 10px; } */
+
+.carousel-btn.prev { left: -60px; }
+.carousel-btn.next { right: -60px; }
+
+.carousel-btn:hover {
+  background: #54ffb8;
+  color: black;
+}
+
+
+
+
+/* Carousel */
+/* .carousel-multi { */
+  /* position: relative; */
+  /* width: 100%;  */
+  /* max-width: calc(3 * 350px + 2 * 40px);  */
+  /* margin: 50px auto; */
+  /* overflow: visible; */
+  
+  /* padding: 0 70px; */
+  /* box-sizing: border-box; */
+  /* overflow: visible; */
+/* } */
+
+.carousel-multi {
+  position: relative;
+  /* width: 100%; */
+  /* max-width: calc(3 * 350px + 2 * 40px); */
+  margin: 50px auto;
+  /* padding: 0 70px; */
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+
+.carousel-multi.second {
+  margin-top: 50px; /* Abstand zum ersten Carousel */
+  margin-bottom: 80px;
+}
+

@@ -1,0 +1,111 @@
+
+
+footer.bg-dark {
+  font-size: 16px;
+  background-color: transparent !important;
+  margin-top: 25px;
+}
+
+footer.bg-dark .social-link { 
+  margin: 0 12px;
+  font-size: 28px !important;
+  line-height: 1;
+  padding: 6px;
+  display: inline-block;
+  transition: color .3s, transform .3s;
+}
+
+footer.bg-dark .social-link i {
+  font-size: inherit;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+footer.bg-dark .social-link:hover i {
+  color: #daa520;   
+  fill: #daa520;     
+  stroke: #daa520; 
+  transform: scale(1.12);
+}
+
+/* Shazam Doppelbild */
+.shazam-link {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+}
+
+/* Beide Bilder übereinanderlegen */
+.shazam-link img {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover-Bild zunächst ausblenden */
+.shazam-link .shazam-hover {
+  opacity: 0;
+}
+
+/* Beim Hover: Gold-Version einblenden */
+footer.bg-dark .social-link:hover .shazam-hover {
+  opacity: 1;
+  transform: scale(1.12);
+}
+
+/* Gleichzeitig die normale Version ausblenden */
+footer.bg-dark .social-link:hover .shazam-normal {
+  opacity: 0;
+}
+
+
+/* Optionale Performance-/Accessibility-Verbesserung */
+@media (prefers-reduced-motion: reduce) {
+  .social-link,
+  .shazam-link img  {
+    transition: none;
+  }
+}
+
+@media (max-width: 847px) {
+
+  /* Block-7 Höhe +40px erhöhen */
+  .block-7 {
+    /* min-height: calc(100vh + 40px); */
+	/* min-height: 420px !important; */
+	height: 325px;
+    /* padding-top: 20px; */
+    /* padding-bottom: 20px; */
+  }
+
+  /* Container erlaubt mehrere Reihen */
+  footer .d-flex {
+    flex-wrap: wrap !important;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  /* Jedes Icon: automatische Breite, aber min. 25% */
+  /* footer .social-link, */
+  /* footer .shazam-link { */
+    /* flex: 1 1 25%;  */
+    /* text-align: center; */
+  /* } */
+/* } */
+
+
+/* @media (prefers-reduced-motion: reduce) { */
+  /* .social-link, */
+  /* .shazam-link img, */
+  /* .col-2 a, */
+  /* .col-2 .menu-label, */
+  /* .col-2 [class^="font-"], */
+  /* .col-2 [class*=" font-"] { */
+    /* transition: none; */
+  /* } */
+/* } */

@@ -1,0 +1,58 @@
+/* Grid (falls noch nicht drin) */
+.spotify-grid{
+  display:grid;
+  grid-template-columns: repeat(2,1fr);
+  gap:30px;
+  max-width:1300px;
+  margin: 60px auto 80px auto; /* oben, rechts, unten, links */
+  /* margin:40px auto;  */
+  /* oben/unten, links/rechts */
+}
+
+
+.spotify-card {
+  position: relative;
+  padding: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  border-radius: 22px;
+
+  /* Glas-Effekt */
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
+
+  /* border: 1px solid rgba(255, 255, 255, 0.25); */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  color: #fff;
+  font-size: 16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Schöner Hover-Effekt */
+.spotify-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+
+
+/* iFrame sauber “eingesetzt” */
+.spotify-embed{
+  overflow:hidden;                   /* schneidet Ecken sauber ab */
+  border-radius:14px;                /* innere runde Ecken */
+}
+.spotify-embed iframe{
+  display:block;
+  width:100%;
+  height:380px;
+  border:0;
+}
+
+/* mobil: untereinander */
+@media (max-width: 800px){
+  .spotify-grid{ grid-template-columns:1fr; }
+}

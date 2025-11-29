@@ -1,0 +1,294 @@
+
+
+/* Mobile-1 — Kleine Smartphones
+   0–480 px  /  4,7″–6,1″ */
+@media (max-width: 479px) {
+    .block-1 {
+        background-attachment: fixed;
+        min-height: 60vh;
+        margin-bottom: -30vh;
+    }
+    .cont_unscharf {
+        background-attachment: fixed;
+        min-height: 30vh;
+    }	
+	
+	.tour {
+		font-size: 50px;
+	}
+}
+@media (max-width: 767px) {
+
+  /* Navbar-Grundlage für Overlay */
+  .cont_navbar {
+    position: relative;
+    z-index: 50;
+  }
+
+  /* Hamburger-Button sichtbar */
+  .menu-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  /* Menü-Zeilen standardmäßig verstecken (DROPDOWN) */
+  .nav-row {
+    display: none !important;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.85);
+    width: 100%;
+    position: absolute;   /* überlagert die Sektion darunter */
+    top: 100%;            /* direkt unter dem Button */
+    left: 0;
+    margin: 0;            /* Bootstrap-Row-Offsets neutralisieren */
+  }
+
+  /* Wenn Menü geöffnet ist → Zeilen zeigen */
+  body.menu-open .nav-row {
+    display: flex !important;
+    z-index: 9999;
+  }
+
+  /* Wenn Menü geöffnet ist → Headings ausblenden */
+  body.menu-open .text_oben {
+    display: none !important;
+  }
+
+  /* Jede Zeile volle Breite, Inhalt zentriert */
+  .nav-row .col-2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Links weiß + zentriert + full width */
+  .nav-row .menu-link {
+    width: 100%;
+    height: auto;
+    padding: 14px 0;
+    color: #fff !important;
+    text-align: center;
+  }
+
+  .nav-row .menu-link:hover {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* -------------------------------------------
+     ORIGINALER CAROUSEL-ABSCHNITT:
+     (NICHT verändert)
+     ------------------------------------------- */
+
+  .carousel-track {
+    gap: 16px;
+  }
+
+  /*
+  .album-card {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+    height: auto;  
+  }
+  */
+
+  .carousel-btn {
+    font-size: 1.8rem;
+    padding: 10px 14px;
+  }
+
+}
+
+
+
+/* ================================
+   RESPONSIVE BREAKPOINT SETTINGS
+   ================================ */
+
+/* ==== Sichtbare Album-Cards exakt definieren ==== */
+
+/* < 768px → 1 Card */
+@media (max-width: 767px) {
+  .carousel-multi {
+    width: 350px;
+    max-width: none;    /* WICHTIG, damit 350px NICHT wieder runtergedrückt wird */
+  }
+}
+
+/* 768 – 1284px → 2 Cards */
+@media (min-width: 768px) and (max-width: 1284px) {
+  .carousel-multi {
+    width: calc(2 * 350px + 1 * 25px);   /* 725px */
+    max-width: none;
+  }
+}
+
+/* 1284 – 1550px → 3 Cards */
+@media (min-width: 1284px) and (max-width: 1550px) {
+  .carousel-multi {
+    width: calc(3 * 350px + 2 * 25px);   /* 1100px */
+    max-width: none;
+  }
+}
+
+/* > 1550px → 4 Cards */
+@media (min-width: 1550px) {
+  .carousel-multi {
+    width: calc(4 * 350px + 3 * 25px);   /* 1475px */
+    max-width: none;
+  }
+}
+
+
+
+
+
+/* Große Smartphones 480–768 px  /  6,1″–6,9″ */
+@media (min-width: 480px) and (max-width: 767px) {
+    .block-1 {
+        background-attachment: fixed;
+        min-height: 75vh;
+		margin-bottom: -37.5vh;
+    }
+	 .cont_unscharf {
+        background-attachment: fixed;
+        min-height: 37.5vh;
+    }
+  .heading-big,
+  .heading-big-light {
+    font-size: clamp(37px, 5.5vw, 52px);
+  }
+
+  .heading-medium {
+    font-size: clamp(23px, 3.5vw, 29px);
+  }	
+	
+}
+
+
+/* Tablet: 768 - 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .block-1 {
+        background-attachment: fixed; 
+        min-height: 85vh;   
+        margin-bottom: -42.5vh;
+    }
+
+    .cont_unscharf {
+        background-attachment: fixed; 
+        min-height: 42.5vh;  
+    }
+	
+}
+
+/* Unter 768px: Alle Tour-Container untereinander */
+@media (max-width: 768px) {
+
+  /* Eltern-Container wieder in Spalte */
+  .block-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	/* gap: 60px; */
+  }
+
+  /* Jeder Container volle Breite */
+  .tour-container {
+	  /* border: 1px solid red; */
+    width: 100% !important;
+    margin: 0 0 40px 0 !important;
+	/* padding: 0px; */
+	gap: 10px;
+    display: flex;
+    flex-direction: column; /* 3 Elemente im Container weiterhin untereinander */
+  }
+
+  /* Streifen bleiben wie gehabt */
+  .tour_streife,
+  .tour_streife_b {
+    text-align: center;
+  }
+  
+  .tour_streife {
+    width: 50%;
+  }
+  
+  .tour_streife_mitte {
+	/* margin: 0; */
+	/* padding: 0px !important; */
+    text-align: center;
+  }  
+  
+  
+}
+
+
+
+/* Unter 1255px: 2 Tour-Container nebeneinander */
+@media (max-width: 1255px) {
+
+  .block-4 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  /* TOUR DATES oben allein */
+  .tour {
+    flex: 0 0 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* *** Gleiche Höhe für alle Tour-Container *** */
+  .tour-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;   /* Elemente verteilen */
+    align-items: center;
+    width: calc(50% - 20px);
+    margin: 0;
+	margin-bottom: 40px;
+    padding: 20px;                    /* etwas Innenabstand */
+    box-sizing: border-box;
+  }
+
+  /* Alle Elemente im Container untereinander */
+  .tour_streife,
+  .tour_streife_b {
+    text-align: center;
+  }
+  
+  .tour_streife_mitte {
+	margin: 0;
+    text-align: center;
+  }  
+  
+}
+
+
+
+
+
+/* Small Desktop
+   1024–1440 px  /  10″–13,3″ */
+@media (min-width: 1024px) and (max-width: 1439px) {
+   body{
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  
+}
+	

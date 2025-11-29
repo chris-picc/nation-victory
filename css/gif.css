@@ -1,0 +1,139 @@
+/* Box, in der die GIFs liegen – rechts mittig im Video */
+.cont_gif {
+  position: absolute;
+  top: 60%;          /* vertikal im Video */
+  right: 5%;         /* Abstand vom rechten Rand */
+  transform: translateY(-50%);
+  
+  /* responsive Größe */
+  width: 25vw;             /* 25% der Bildschirmbreite */
+  height: 25vw;            /* quadratisch */
+  max-width: 300px;        /* niemals größer als Desktop */
+  max-height: 300px;
+  min-width: 150px;        /* niemals zu klein (z. B. Smartphones) */
+  min-height: 150px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible; /* GIFs dürfen rausgucken */
+}
+
+/* GIFs exakt übereinander */
+.zoom-img,
+.zoom-img-b {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  opacity: 0;                /* Start: unsichtbar, wird durch Animation gesteuert */
+
+  animation-fill-mode: both;
+  transition: filter 0.3s ease;
+  will-change: opacity, transform, filter;
+}
+
+/* GIF 1 sichtbar am Anfang */
+.zoom-img {
+  animation: gifSwap 10s infinite ease-in-out;
+}
+
+/* GIF 2 folgt */
+.zoom-img-b {
+  animation: gifSwapAlt 10s infinite ease-in-out;
+}
+
+/* GIF 1 – bleibt länger sichtbar */
+@keyframes gifSwap {
+  0% {
+    opacity: 0;
+    transform: scale(1.08);
+    filter: blur(3px);
+  }
+  12% {
+    opacity: 1;
+    transform: scale(1.00);
+    filter: blur(0px);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(1.01);
+  }
+  60% {
+    opacity: 0;
+    transform: scale(1.03);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.03);
+    filter: blur(1px);
+  }
+}
+
+/* GIF 2 – startet deutlich später */
+@keyframes gifSwapAlt {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+    filter: blur(3px);
+  }
+  65% {
+    opacity: 0;
+    transform: scale(0.95);
+    filter: blur(3px);
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1.02);
+    filter: blur(0px);
+  }
+  95% {
+    opacity: 1;
+    transform: scale(1.00);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.00);
+    filter: blur(1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner .marquee,
+  .zoom-img,
+  .zoom-img-b {
+    animation: none;
+  }
+
+  /* Wenig Bewegung: nur GIF 1 anzeigen */
+  .zoom-img {
+    opacity: 1;
+  }
+
+  .zoom-img-b {
+    opacity: 0;
+  }
+}
+
+/* VIDEO BLEIBT FULLSCREEN */
+.block-video {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Video selbst bleibt fullscreen */
+.block-video video {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  /* width: auto; */
+  width: 100%;
+  transform: translateX(-50%);
+  object-fit: cover;
+}

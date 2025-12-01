@@ -91,6 +91,7 @@
 
   .carousel-track {
     gap: 16px;
+	overflow-x: auto;
   }
 
   /*
@@ -111,11 +112,66 @@
 
 
 
+
+
+
 /* ================================
    RESPONSIVE BREAKPOINT SETTINGS
    ================================ */
 
 /* ==== Sichtbare Album-Cards exakt definieren ==== */
+
+/* Unter 500px: album-card verkleinern */
+@media (max-width: 500px) {
+
+  .block-2 {
+    padding-top: 40px;
+    padding-bottom: 40px;
+	height: 650px;
+  }
+  
+  .album-card {
+    flex: 0 0 260px; 
+    width: 260px;
+    height: 260px;
+	/* margin-top: 50px; */
+    /* padding: 10px;  */
+  }
+
+  .carousel-multi {
+    width: 320px;
+    margin: 0 auto;      /* Container selber zentrieren */
+    position: relative;
+	overflow: visible;
+  }	 
+
+  .carousel-multi + .carousel-multi {
+    /* margin-top: 40px;  */
+  }
+
+  
+  .carousel-track {
+    width: 260px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  /* Buttons */
+  .carousel-btn {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* 20px vom Rand = 10px Abstand zur Card */
+  .carousel-btn.prev {
+    left: 20px;
+  }
+
+  .carousel-btn.next {
+    right: 20px;
+  }  
+  
+}
 
 /* < 768px → 1 Card */
 @media (max-width: 767px) {

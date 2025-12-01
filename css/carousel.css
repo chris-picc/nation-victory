@@ -58,13 +58,14 @@
   gap: 25px;
   justify-content: flex-start;
   padding: 15px 0;
-  /* overflow-x: auto; */
+  overflow-x: auto;
   
   overflow: hidden;
   
   scroll-behavior: smooth;
   scrollbar-width: none;
   scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 .carousel-track::-webkit-scrollbar { display: none; }
 
